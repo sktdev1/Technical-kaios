@@ -1,14 +1,23 @@
-var a = prompt("Enter Your Hotspot name");
-var b = prompt("Enter Your Hotspot password");
-document.getElementById("name").innerHTML = a;
-document.getElementById("pass").innerHTML = b;
+function getQueryParams(qs) {
+    qs = qs.split('+').join(' ');
 
+    var params = {},
+        tokens,
+        re = /[?&]?([^=]+)=([^&]*)/g;
+
+    while (tokens = re.exec(qs)) {
+        params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+    }
+
+    return params;
+}
+var query = getQueryParams(document.location.search);
 var lock = navigator.mozSettings.createLock();
-lock.set({'tethering.wifi.enabled': true});
+lock.set({'tethering.wifi.enabled': query.state});
 lock.set({'tethering.wifi.ip': "192.168.1.1"});
 lock.set({'tethering.wifi.prefix': "24"});
 lock.set({'tethering.wifi.dhcpserver.startip': "192.168.1.10"});
 lock.set({'tethering.wifi.dhcpserver.endip': "192.168.1.30"});
-lock.set({'tethering.wifi.ssid': a});
-lock.set({'tethering.wifi.security.type': "wpa2-psk"});
-lock.set({'tethering.wifi.security.password': b});
+lock.set({'tethering.wifi.ssid': ""+query.wifiname+""});
+lock.set({'tethering.wifi.security.type': ""+query.security+""});
+lock.set({'tethering.wifi.security.password': ""+query.password+"" });
