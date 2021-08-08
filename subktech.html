@@ -1,0 +1,34 @@
+<!--DOCTYPE html-->
+<html>
+<body>
+<p>Select An Package file and Click on the install button to install app  on your Jio Phone</p>
+
+  <input type="file" id="myFile" name="filename">
+  </br>  </br>
+
+</body>
+</html>
+
+
+<style>
+.SKT {
+  width: 100%;
+  border: 0.8rem;
+  background-color: blue;
+  color: white;
+  font-size: 18px;
+  padding: 10px 28px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.block:hover {
+  background-color: #ddd;
+  color: black;
+}
+</style>
+<button class="SKT" id="test50">install</button><br /><br /></a> 
+<script>var addNotification=document.querySelector("#test50");if(addNotification){addNotification.onclick=function(){if("Notification"in window){if(Notification.permission!=="denied"){Notification.requestPermission(function(permission){if(!("permission"in Notification)){Notification.permission=permission;}});} if(Notification.permission==="granted"){new Notification("JioHots",{body:"Download Complete",icon:"https://i.postimg.cc/7YpbkXhR/Embedded-Image-10.png",});}} else{var notify=navigator.mozNotification.createNotification("See this","This is a notification");notify.show();}};}</script> 
+
+
+</div>
